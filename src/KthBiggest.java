@@ -4,9 +4,9 @@ public class KthBiggest {
 	public static int K;
 
 	public static void main(String[] args) {
-		int[] array = { 43, 56, 12, 760, 58, 8, 50, 85, 53, 87, 4, 56 };
+		int[] array = {43, 56, 12, 760, 58, 8, 50, 85, 53, 87, 4,56};
 		// it is a random because of testing
-		K = new Random().nextInt(array.length + 1);
+		K = new Random().nextInt(array.length + 1) + 0;
 		/*
 		 * check if K is negative or bigger than the number of the elements in
 		 * the array and if not call the method
@@ -65,7 +65,7 @@ public class KthBiggest {
 			 * by value than the element on the newPivotIndex position) so K is in the right part
 			 */
 			if (array.length - newPivotIndex > k) {
-				//call our method for the newArray
+				//call our method with new indexes
 				return biggestKthElement(array, newPivotIndex+1,highestIndex , k);
 			} else if (array.length - newPivotIndex == k) {
 
@@ -75,16 +75,9 @@ public class KthBiggest {
 				 * if k is bigger than array.length - newPivotIndex(that gave us that K must be smaller 
 				 * by value than the element on the newPivotIndex position) so K is in the left part
 				 */
-				int[] newArray = new int[newPivotIndex];
-				k = k - (array.length - newPivotIndex);
-				/*creating an array only with the elements that are bigger by value than the element
-				 * on the newPivotIndex position
-				 */
-				for (int i = 0; i < newArray.length; i++) {
-					newArray[i] = array[i];
-				}
-				//call our method for the newArray
-				return biggestKthElement(newArray, lowestIndex, newArray.length - 1, k);
+				
+				//call our method with new indexes
+				return biggestKthElement(array, lowestIndex, newPivotIndex, k);
 			}
 
 		}
