@@ -16,7 +16,7 @@ public class KthBiggest {
 		} else if (K <= 0) {
 			System.out.println("K must be positive");
 		} else {
-			System.out.println("The " + K + "-th biggest number is " + biggestKthElement(array, 0, array.length - 1, K));
+			System.out.println("The " + K + " biggest number is " + biggestKthElement(array, 0, array.length - 1, K));
 		}
 	}
 
@@ -65,15 +65,8 @@ public class KthBiggest {
 			 * by value than the element on the newPivotIndex position) so K is in the right part
 			 */
 			if (array.length - newPivotIndex > k) {
-				/*creating an array only with the elements that are bigger by value than the element
-				 * on the newPivotIndex position
-				 */
-				int[] newArray = new int[array.length - newPivotIndex - 1];
-				for (int i = 0; i < newArray.length; i++) {
-					newArray[i] = array[i + newPivotIndex + 1];
-				}
 				//call our method for the newArray
-				return biggestKthElement(newArray, lowestIndex, newArray.length - 1, k);
+				return biggestKthElement(array, newPivotIndex+1,highestIndex , k);
 			} else if (array.length - newPivotIndex == k) {
 
 				return array[newPivotIndex];
