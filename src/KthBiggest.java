@@ -4,7 +4,7 @@ public class KthBiggest {
 	public static int K;
 
 	public static void main(String[] args) {
-		int[] array = {43, 56, 12, 760, 58, 8, 50, 85, 53, 87, 4,56};
+		int[] array = { 43, 56, 12, 760, 58, 8, 50, 85, 53, 87, 4, 56 };
 		// it is a random because of testing
 		K = new Random().nextInt(array.length + 1) + 0;
 		/*
@@ -57,32 +57,35 @@ public class KthBiggest {
 			 */
 			Random rand = new Random();
 			int pivotIndex = lowestIndex + rand.nextInt(highestIndex - lowestIndex);
-			//find the right place for our pivot
+			// find the right place for our pivot
 			int newPivotIndex = partition(array, lowestIndex, highestIndex, pivotIndex);
 
 			/*
-			 * if k is smaller than array.length - newPivotIndex(that gave us that K must be bigger 
-			 * by value than the element on the newPivotIndex position) so K is in the right part
+			 * if k is smaller than array.length - newPivotIndex(that gave us
+			 * that K must be bigger by value than the element on the
+			 * newPivotIndex position) so K is in the right part
 			 */
 			if (array.length - newPivotIndex > k) {
-				//call our method with new indexes
-				return biggestKthElement(array, newPivotIndex+1,highestIndex , k);
+				// call our method with new indexes
+				return biggestKthElement(array, newPivotIndex + 1, highestIndex, k);
 			} else if (array.length - newPivotIndex == k) {
 
 				return array[newPivotIndex];
 			} else {
 				/*
-				 * if k is bigger than array.length - newPivotIndex(that gave us that K must be smaller 
-				 * by value than the element on the newPivotIndex position) so K is in the left part
+				 * if k is bigger than array.length - newPivotIndex(that gave us
+				 * that K must be smaller by value than the element on the
+				 * newPivotIndex position) so K is in the left part
 				 */
-				
-				//call our method with new indexes
+
+				// call our method with new indexes
 				return biggestKthElement(array, lowestIndex, newPivotIndex, k);
 			}
 
 		}
 
 	}
+
 	/*
 	 * method that separate the array
 	 */
@@ -100,6 +103,7 @@ public class KthBiggest {
 		return index;
 
 	}
+
 	/*
 	 * method that swap two elements of the array
 	 */
